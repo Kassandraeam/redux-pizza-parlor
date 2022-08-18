@@ -1,75 +1,83 @@
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
 
-function PizzaForm (){
 
-let [customerToAdd, setCustomerToAdd] = useState({customer_name: '', street_address: '', city: '', zip: '', type: ''});
 
-const customer_name = (event) => {
-    setCustomerToAdd({
-        ...customerToAdd,
-        customer_name: event.target.value
-    })
-}
-const street_address = (event) => {
-    setCustomerToAdd({
-        ...customerToAdd,
-        street_address: event.target.value
-    })
-}
-const city = (event) => {
-    setCustomerToAdd({
-        ...customerToAdd,
-        city: event.target.value
-    })
-}
-const zip = (event) => {
-    setCustomerToAdd({
-        ...customerToAdd,
-        zip: event.target.value
-    })
-}
-// const type = (event) => {
-//     setCustomerToAdd({
-//         ...customerToAdd,
-//         type: event.target.value
-//     })
-// }
+function PizzaForm() {
 
-const addCustomer = (event) => {
-    event.preventDefault();
-    console.log(customerToAdd);
-    
-}
+    const dispatch = useDispatch();
+
+    let [customerToAdd, setCustomerToAdd] = useState({ customer_name: '', street_address: '', city: '', zip: '', type: '' });
+
+    const customer_name = (event) => {
+        setCustomerToAdd({
+            ...customerToAdd,
+            customer_name: event.target.value
+        })
+    }
+    const street_address = (event) => {
+        setCustomerToAdd({
+            ...customerToAdd,
+            street_address: event.target.value
+        })
+    }
+    const city = (event) => {
+        setCustomerToAdd({
+            ...customerToAdd,
+            city: event.target.value
+        })
+    }
+    const zip = (event) => {
+        setCustomerToAdd({
+            ...customerToAdd,
+            zip: event.target.value
+        })
+    }
+    const type = (event) => {
+        setCustomerToAdd({
+            ...customerToAdd,
+            type: event.target.value
+        })
+    }
+
+    const addCustomer = (event) => {
+        event.preventDefault();
+        console.log(customerToAdd);
+        dispatch({
+            type: 'ADD_INFO',
+            payload: customerToAdd
+        })
+    }
 
     return (
         <>
-        <h3>Step 2: Customer Information</h3>
-        <form onSubmit = {(event) => addCustomer(event)}>
+            <h3>Step 2: Customer Information</h3>
+            <form onSubmit={(event) => addCustomer(event)}>
 
-        <input 
-        placeholder="Name"
-        onChange={customer_name}
-        />
-        <input 
-        placeholder="Street"
-        onChange={street_address}
-        />
-        <input 
-        placeholder="City"
-        onChange={city}
-        />
-        <input 
-        placeholder="Zip"
-        onChange={zip}
-        />
+                <input
+                    placeholder="Name"
+                    onChange={customer_name}
+                />
+                <input
+                    placeholder="Street"
+                    onChange={street_address}
+                />
+                <input
+                    placeholder="City"
+                    onChange={city}
+                />
+                <input
+                    placeholder="Zip"
+                    onChange={zip}
+                />
 
-        <input type="radio" name="type" /> Pickup
-        <input type="radio" name="type"/> Delivery
+                <input type="radio" name="type" value="Pickup" onChange={type} /> Pickup
+                <input type="radio" name="type" value="Delivery" onChange={type} /> Delivery
 
 
-        <button>NEXT</button>
+                <button>NEXT</button>
 
-        </form>
+            </form>
         </>
     )
 }

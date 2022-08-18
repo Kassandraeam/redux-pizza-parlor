@@ -5,7 +5,7 @@ import App from './components/App/App';
 import {Provider} from 'react-redux';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
-
+import {useDispatch} from 'react-redux';
 
 
 //reducers here
@@ -29,13 +29,22 @@ const selectedPizzas = (state = [], action) => {
     return state;
 }
 
+const customer = (state = [], action) => {
+    if (action.type === 'ADD_INFO') {
+        console.log(action.payload);
+        return action.payload
+    }
+    return state;
+}
+
 
 
 const store = createStore(
     combineReducers({
         //REDUCERS GO HERE
         pizzaList,
-        selectedPizzas
+        selectedPizzas,
+        customer
     }),
     applyMiddleware(logger)
 );
