@@ -2,8 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import PizzaList from '../PizzaList/PizzaList.jsx';
-import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import PizzaForm from '../PizzaForm/PizzaForm.jsx';
+
 
 
 function App() {
@@ -17,14 +19,14 @@ function App() {
   //GET REQUEST
   const getPizzas = () => {
     axios.get('/api/pizza')
-      .then( (response) => {
+      .then((response) => {
         console.log(response.data)
         //DISPATCH
         dispatch({
           type: 'SET_PIZZAS',
           payload: (response.data)
         })
-      }).catch( (err) => {
+      }).catch((err) => {
         console.error(err);
       })
   }
@@ -34,10 +36,11 @@ function App() {
       <header className='App-header'>
         <h1 className='App-title'>Prime Pizza</h1>
       </header>
+      <PizzaForm />
       <PizzaList />
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-  
+
     </div>
   );
 }
