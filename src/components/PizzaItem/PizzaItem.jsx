@@ -9,6 +9,7 @@ function PizzaItem({pizza}) {
     const [isAdded, setIsAdded] = useState(false);
 
     const handleAdd = () => {
+        pizza.quantity = 1; //this makes every pizza have a quantity of 1, later, dont allow more pizzas to be added???
         console.log(pizza)
         dispatch({
             type: 'ADD_PIZZA',

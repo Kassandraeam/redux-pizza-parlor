@@ -31,7 +31,7 @@ const selectedPizzas = (state = [], action) => {
     return state;
 }
 
-const customer = (state = [], action) => {
+const customer = (state = {}, action) => {
     if (action.type === 'ADD_INFO') {
         console.log(action.payload);
         return action.payload
