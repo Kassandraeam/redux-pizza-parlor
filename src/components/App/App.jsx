@@ -10,6 +10,8 @@ import {
   Link
 } from 'react-router-dom';
 import PizzaForm from '../PizzaForm/PizzaForm.jsx';
+import Admin from '../Admin/Admin';
+import PizzaTotal from '../PizzaTotal/PizzaTotal';
 import Checkout from '../Checkout/Checkout.jsx';
 
 
@@ -45,12 +47,15 @@ function App() {
         <header className='App-header'>
           <h1 className='App-title'>Prime Pizza</h1>
         </header>
+        {/* <PizzaTotal/> */}
         <Route path='/' exact>
           <PizzaList />
         </Route>
         <Route path='/customer-info'>
           <PizzaForm />
         </Route>
+        <Route path="/admin">
+          <Admin/>
         <Route path='/checkout'>
           <Checkout getPizzas={getPizzas}/>
         </Route>
