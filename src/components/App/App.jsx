@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 import PizzaList from '../PizzaList/PizzaList.jsx';
-import {useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   HashRouter as Router,
   Route,
@@ -55,9 +55,10 @@ function App() {
           <PizzaForm />
         </Route>
         <Route path="/admin">
-          <Admin/>
+          <Admin />
+        </Route>
         <Route path='/checkout'>
-          <Checkout getPizzas={getPizzas}/>
+          <Checkout getPizzas={getPizzas} />
         </Route>
       </div>
     </Router>
