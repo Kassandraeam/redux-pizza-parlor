@@ -12,6 +12,7 @@ import {
 import PizzaForm from '../PizzaForm/PizzaForm.jsx';
 import Admin from '../Admin/Admin';
 import PizzaTotal from '../PizzaTotal/PizzaTotal';
+import Checkout from '../Checkout/Checkout.jsx';
 
 
 
@@ -55,6 +56,8 @@ function App() {
         </Route>
         <Route path="/admin">
           <Admin/>
+        <Route path='/checkout'>
+          <Checkout getPizzas={getPizzas}/>
         </Route>
       </div>
     </Router>

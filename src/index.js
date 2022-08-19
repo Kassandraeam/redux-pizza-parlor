@@ -23,13 +23,15 @@ const pizzaList = (state = [], action) => {
 
 //SELECTED PIZZAS REDUCER
 const selectedPizzas = (state = [], action) => {
-    if(action.type === 'ADD_PIZZAS'){
+    if(action.type === 'ADD_PIZZA'){
         return [...state, action.payload]
+    } else if(action.type === 'REMOVE_PIZZA') {
+        // remove a pizza with .filter, filter through state, target to remove pizza with its action.payload.id.
     }
     return state;
 }
 
-const customer = (state = [], action) => {
+const customer = (state = {}, action) => {
     if (action.type === 'ADD_INFO') {
         console.log(action.payload);
         return action.payload

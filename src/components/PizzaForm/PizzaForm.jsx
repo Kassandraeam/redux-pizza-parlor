@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import PizzaTotal from "../PizzaTotal/PizzaTotal";
+import {useHistory} from 'react-router-dom';
 
 
 function PizzaForm() {
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
 
     let [customerToAdd, setCustomerToAdd] = useState({ customer_name: '', street_address: '', city: '', zip: '', type: '' });
 
@@ -48,6 +51,7 @@ function PizzaForm() {
             payload: customerToAdd
         })
         //history push to the next page
+        history.push('/checkout')
     }
 
     return (
@@ -77,6 +81,7 @@ function PizzaForm() {
                 <input type="radio" name="type" value="Delivery" onChange={type} /> Delivery
 
                 <button>NEXT</button>
+
 
             </form>
         </>
