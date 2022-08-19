@@ -8,21 +8,31 @@ function PizzaItem({pizza}) {
 
     const [isAdded, setIsAdded] = useState(false);
 
-    const handleClick = () => {
+    const handleAdd = () => {
         console.log(pizza)
         dispatch({
-            type: 'ADD_PIZZAS',
+            type: 'ADD_PIZZA',
             payload: pizza
         })
+        setIsAdded(!isAdded);
         ///////////////////////////////////STOPPED AND WILL PICK UP WITH TERNARY
     }
 
+    const handleRemove = () => {
+        dispatch({
+            type: 'REMOVE_PIZZA',
+            payload: pizza
+        })
+        setIsAdded(!isAdded);
+    }
+
+    console.log(isAdded);
     return(
         <>
 
             <li><h4>{pizza.name}</h4>{pizza.description}{pizza.price}
                 {/* <img src={pizza.image_path}></img> */}
-                <button onClick={() => handleClick()} >ADD PIZZA</button>
+                {isAdded === true ? <button onClick={() => handleRemove()}>Remove from Cart</button> : <button onClick={() => handleAdd()} >Add to Cart</button>}
             </li>
         </>
     )
