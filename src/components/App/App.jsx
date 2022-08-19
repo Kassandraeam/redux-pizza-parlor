@@ -10,6 +10,7 @@ import {
   Link
 } from 'react-router-dom';
 import PizzaForm from '../PizzaForm/PizzaForm.jsx';
+import Checkout from '../Checkout/Checkout.jsx';
 
 
 
@@ -49,6 +50,9 @@ function App() {
         </Route>
         <Route path='/customer-info'>
           <PizzaForm />
+        </Route>
+        <Route path='/checkout'>
+          <Checkout getPizzas={getPizzas}/>
         </Route>
       </div>
     </Router>
