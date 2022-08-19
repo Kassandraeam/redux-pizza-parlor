@@ -9,6 +9,8 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import PizzaForm from '../PizzaForm/PizzaForm.jsx';
+
 
 
 function App() {
@@ -22,14 +24,14 @@ function App() {
   //GET REQUEST
   const getPizzas = () => {
     axios.get('/api/pizza')
-      .then( (response) => {
+      .then((response) => {
         console.log(response.data)
         //DISPATCH
         dispatch({
           type: 'SET_PIZZAS',
           payload: (response.data)
         })
-      }).catch( (err) => {
+      }).catch((err) => {
         console.error(err);
       })
   }
